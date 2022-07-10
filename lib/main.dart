@@ -1,6 +1,30 @@
 import 'package:flutter/material.dart';
 
+class Person {
+  final String name;
+
+  Person(this.name);
+
+  void printName() {
+    print(name);
+  }
+}
+
+void test() async {
+  await for (final value in getName()) {
+    print(value);
+  }
+  print('Stream finished working');
+}
+
+Stream<String> getName() {
+  return Stream.periodic(const Duration(seconds: 1), (value) {
+    return 'Foo bar';
+  });
+}
+
 void main() {
+  test();
   runApp(const MyApp());
 }
 
